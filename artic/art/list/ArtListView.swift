@@ -39,7 +39,7 @@ struct ArtRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                AsyncImageView(url: art.imageURL)
+                AsyncImageView(url: art.imageURL, mode: .fill)
                 .frame(width: 120, height: 120)
                 .clipShape(Circle())
                 VStack(alignment: .leading, spacing: 8) {
@@ -67,7 +67,7 @@ struct ArtRow: View {
 
 struct ArtListView_Previews: PreviewProvider {
     static var previews: some View {
-        InjectedValues.set(artRepository: MockArtRepositoryImpl())
+        InjectedValues.set(repository: MockRepositoryImpl())
         return NavigationView {ArtListView(viewModel: ArtListViewModel()) }
     }
 }

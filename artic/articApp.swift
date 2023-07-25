@@ -11,7 +11,7 @@ import SwiftUI
 struct articApp: App {
     
     init() {
-//        InjectedValues.set(artRepository: MockArtRepositoryImpl())
+//        InjectedValues.set(repository: MockRepositoryImpl())
     }
     
     var body: some Scene {

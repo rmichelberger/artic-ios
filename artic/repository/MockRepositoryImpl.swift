@@ -1,11 +1,11 @@
 //
-//  MockArtRepositoryImpl.swift
+//  MockRepositoryImpl.swift
 //  artic
 //
 //  Created by roland.michelberger on 20.07.23.
 //
 
-struct MockArtRepositoryImpl: ArtRepository {
+final class MockRepositoryImpl: Repository {
     func getArtList() async throws -> [Art] {
         try await Task.sleep(nanoseconds: 500_000_000)
         return [Art(

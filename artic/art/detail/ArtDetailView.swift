@@ -19,7 +19,7 @@ struct ArtDetailView: View {
             case .failure(let error): Text(error)
             case .success(let artDetail):
                 ScrollView {
-                    AsyncImageView(url: artDetail.imageURL).frame(minHeight: 100)
+                    AsyncImageView(url: artDetail.imageURL, mode: .fit).frame(minHeight: 100)
                     Text(artDetail.artistDisplay).padding(.horizontal)
                     if let history = artDetail.publicationHistory {
                         HStack {
@@ -39,7 +39,7 @@ struct ArtDetailView: View {
 
 struct ArtDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InjectedValues.set(artRepository: MockArtRepositoryImpl())
+        InjectedValues.set(repository: MockRepositoryImpl())
         return ArtDetailView(id: 1, viewModel: ArtDetailViewModel())
     }
 }
