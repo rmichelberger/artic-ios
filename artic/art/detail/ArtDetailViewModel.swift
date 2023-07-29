@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import Inject
 
-final class ArtDetailViewModel: ObservableObject {
+final class ArtDetailViewModel: ViewModel {
     
-    @Injected(\.repository) private var repository: Repository
+    @Inject(\.repository) private var repository: Repository
     @Published private(set) var viewState = ViewState<ArtDetail, String>.initial
-        
+    
     @MainActor
     func loadArtDetail(id: Int) async {
         viewState = .loading
@@ -23,4 +24,3 @@ final class ArtDetailViewModel: ObservableObject {
         }
     }
 }
-

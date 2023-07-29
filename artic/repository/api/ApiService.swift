@@ -6,23 +6,28 @@
 //
 
 import Foundation
+import RetroSwift
 
 final class ApiService {
-    
+    private let retroSwift: RetroSwift
     private let baseUrl = "https://api.artic.edu"
+
+    init(retroSwift: RetroSwift) {
+        self.retroSwift = retroSwift
+    }
     
-    enum ApiServiceError: Error { case malformedRequest }
-    
-    func get<T: Decodable>(path: String, queryItems: [URLQueryItem]?) async throws -> ApiResponse<T> {
-        guard var urlComponents = URLComponents(string: baseUrl) else { throw ApiServiceError.malformedRequest }
-        urlComponents.path = path
-        urlComponents.queryItems = queryItems
-        guard let url = urlComponents.url else { throw ApiServiceError.malformedRequest }
-        return try await perform(request: URLRequest(url: url))
+    func getArtList() async throws -> ApiResponse<[Art]> {
+        @Path(path: "/api/v1/artworks") var path
+        @Query(name: "fields") var fields = "id,title,image_id,date_display,artist_title,place_of_origin,medium_display,publication_history"
+        @Query(name: "limit") var limit = 100
+        @GET(baseURL: baseUrl, path: path, queries: [fields, limit]) var request
+        return try await retroSwift.execute(request: request)
     }
 
-    func perform<T: Decodable>(request: URLRequest) async throws -> ApiResponse<T> {
-        let data = try await URLSession.shared.data(for: request).0
-        return try JSONDecoder().decode(ApiResponse<T>.self, from: data)
+    func getArtDetail(id: Int) async throws -> ApiResponse<ArtDetail> {
+        @Path(path: "/api/v1/artworks/{id}", name: "id") var path = id
+        @Query(name: "fields") var fields = "id,title,image_id,date_display,place_of_origin,medium_display,publication_history,artist_display,style_title"
+        @GET(baseURL: baseUrl, path: path, queries: [fields]) var request
+        return try await retroSwift.execute(request: request)
     }
 }

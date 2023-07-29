@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Inject
 
 struct ArtDetailView: View {
     
     let id: Int
-    @StateObject var viewModel: ArtDetailViewModel
+    @ObservedObject private var viewModel: ArtDetailViewModel = Inject.viewModel()
     
     var body: some View {
         Group {
@@ -19,17 +20,19 @@ struct ArtDetailView: View {
             case .failure(let error): Text(error)
             case .success(let artDetail):
                 ScrollView {
-                    AsyncImageView(url: artDetail.imageURL, mode: .fit).frame(minHeight: 100)
-                    Text(artDetail.artistDisplay).padding(.horizontal)
-                    if let history = artDetail.publicationHistory {
-                        HStack {
-                            Image(systemName: "text.bubble")
-                            Text("History").font(.title2)
-                        }.padding(.init(top: 12, leading: 0, bottom: 8, trailing: 0))
-                        Text(history).padding(.horizontal)
-                    }
+                    AsyncImageView(url: artDetail.imageURL, mode: .fit) {
+                        ProgressView().tint(Color.primary).colorInvert()
+                    }.frame(maxWidth: .infinity, minHeight: 100)
+                        .background(.primary)
+                    Text(artDetail.artistDisplay).padding(.horizontal).italic().foregroundColor(.secondary)
+                    HStack {
+                        Image(systemName: "list.bullet").bold()
+                        Text("History").font(.title2).bold()
+                        Spacer()
+                    }.padding(.horizontal).padding(.top).padding(.bottom, 8)
+                    Text(artDetail.publicationHistory).padding(.horizontal)
                 }
-                .navigationTitle(artDetail.title)
+                .navigationTitle(artDetail.title ?? "")
             }
         }.task {
             await viewModel.loadArtDetail(id: id)
@@ -39,7 +42,11 @@ struct ArtDetailView: View {
 
 struct ArtDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        InjectedValues.set(repository: MockRepositoryImpl())
-        return ArtDetailView(id: 1, viewModel: ArtDetailViewModel())
+        Dependencies.currentRepository = MockRepository()
+        return ForEach(ColorScheme.allCases, id: \.self) {
+            NavigationView {
+                ArtDetailView(id: 1)
+            }.preferredColorScheme($0)
+        }
     }
 }

@@ -9,14 +9,14 @@ import Foundation
 
 struct Art: Decodable, Identifiable {
     let id: Int
-    let title: String
-    let dateDisplay: String
+    let title: String?
+    let dateDisplay: String?
     let placeOfOrigin: String?
     let mediumDisplay: String?
     let artistTitle: String?
     let imageId: String?
     let publicationHistory: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case title

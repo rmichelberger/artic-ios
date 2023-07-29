@@ -9,11 +9,11 @@ import Foundation
 
 struct ArtDetail: Decodable {
     let id: Int
-    let title: String
-    let dateDisplay: String
+    let title: String?
+    let dateDisplay: String?
     let placeOfOrigin: String?
     let mediumDisplay: String?
-    let artistDisplay: String
+    let artistDisplay: String?
     let imageId: String?
     let publicationHistory: String?
     let styleTitle: String?

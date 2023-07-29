@@ -6,28 +6,22 @@
 //
 
 import SwiftUI
+import Inject
 
 struct ArtListView: View {
-    
-    @ObservedObject var viewModel: ArtListViewModel
+    @ObservedObject private var viewModel: ArtListViewModel = Inject.viewModel()
 
+    let navigateToDetail: (Int) -> Void
+    
     var body: some View {
-        VStack {
+        Group {
             switch viewModel.viewState {
             case .initial, .loading: ProgressView()
-            case .failure(let error): Text(error)
+            case .failure(let error): Text(error).padding()
             case .success(let arts):
                 List(arts) { art in
-                    NavigationLink {
-                        ArtDetailView(id: art.id, viewModel: ArtDetailViewModel())
-                    } label: {
-                        ArtRow(art: art)
-                    }
+                    ArtRow(art: art, navigateToDetail: navigateToDetail)
                 }
-            }
-        }.task {
-            if case .initial = viewModel.viewState {
-                await viewModel.loadArtList()
             }
         }.navigationTitle("ArtIC")
     }
@@ -35,39 +29,50 @@ struct ArtListView: View {
 
 struct ArtRow: View {
     let art: Art
+    let navigateToDetail: (Int) -> Void
     
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                AsyncImageView(url: art.imageURL, mode: .fill)
-                .frame(width: 120, height: 120)
-                .clipShape(Circle())
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Image(systemName: "person.fill")
-                        Text(art.artistTitle ?? "Unknown")
+        Button {
+            navigateToDetail(art.id)
+        } label: {
+            VStack(alignment: .leading) {
+                HStack {
+                    AsyncImageView(url: art.imageURL, mode: .fill) {
+                        ProgressView().tint(Color.primary).colorInvert()
                     }
-                    HStack {
-                        Image(systemName: "calendar")
-                        Text(art.dateDisplay)
-                    }
-                    if let placeOfOrigin = art.placeOfOrigin {
+                    .frame(width: 120, height: 120)
+                    .background(.primary)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(.primary, lineWidth: 4))
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text(art.artistTitle)
+                        }
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text(art.dateDisplay)
+                        }
                         HStack {
                             Image(systemName: "mappin")
-                            Text(placeOfOrigin)
+                            Text(art.placeOfOrigin)
                         }
                     }
                 }
+                Text(art.title).font(.title)
+                Text(art.mediumDisplay).italic().foregroundColor(.secondary)
             }
-            Text(art.title).font(.title)
-            Text(art.mediumDisplay ?? "")
-        }
+        }.buttonStyle(.plain)
     }
 }
 
 struct ArtListView_Previews: PreviewProvider {
     static var previews: some View {
-        InjectedValues.set(repository: MockRepositoryImpl())
-        return NavigationView {ArtListView(viewModel: ArtListViewModel()) }
+        Dependencies.currentRepository = MockRepository()
+        return ForEach(ColorScheme.allCases, id: \.self) {
+            NavigationView {
+                ArtListView() { _ in }
+            }.preferredColorScheme($0)
+        }
     }
 }

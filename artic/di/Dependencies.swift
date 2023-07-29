@@ -5,19 +5,11 @@
 //  Created by roland.michelberger on 24.07.23.
 //
 
-private struct RepositoryProviderKey: InjectionKey {
-    static var currentValue: Repository = RepositoryImpl(apiService: ApiService())
-}
+import RetroSwift
+import Inject
+import OkHttpClient
 
-extension InjectedValues {
-    var repository: Repository {
-        get { Self[RepositoryProviderKey.self] }
-        set { Self[RepositoryProviderKey.self] = newValue }
-    }
-}
-
-extension InjectedValues {
-    static func set(repository: Repository) {
-        RepositoryProviderKey.currentValue = repository
-    }
+extension Dependencies {
+    var repository: Repository { Dependencies.currentRepository }
+    static var currentRepository: Repository = RepositoryImpl(apiService: ApiService(retroSwift: RetroSwift(client: OkHttpClient())))
 }

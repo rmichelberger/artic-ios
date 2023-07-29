@@ -9,15 +9,19 @@ import SwiftUI
 
 @main
 struct articApp: App {
-    
-    init() {
-//        InjectedValues.set(repository: MockRepositoryImpl())
-    }
+    @State private var path = [Screen]()
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                ArtListView(viewModel: ArtListViewModel())
+            NavigationStack(path: $path) {
+                ArtListView() { id in
+                    path.append(.artDetail(id))
+                }
+                .navigationDestination(for: Screen.self) { screen in
+                    if case let .artDetail(id) = screen {
+                        ArtDetailView(id: id)
+                    }
+                }
             }
         }
     }

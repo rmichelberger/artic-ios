@@ -6,20 +6,30 @@
 //
 
 import Foundation
+import Inject
 
-final class ArtListViewModel: ObservableObject {
-    
-    @Injected(\.repository) private var repository: Repository
+final class ArtListViewModel: ViewModel {
+        
+    @Inject(\.repository) private var repository: Repository
     @Published private(set) var viewState = ViewState<[Art], String>.initial
     
-    @MainActor
-    func loadArtList() async {
+    init() {
+        loadArtList()
+    }
+    
+    private func loadArtList() {
         viewState = .loading
-        do {
-            let artListModels = try await repository.getArtList()
-            viewState = .success(artListModels)
-        } catch {
-            viewState = .failure(error.localizedDescription)
+        Task {
+            do {
+                let artListModels = try await repository.getArtList()
+                await MainActor.run {
+                    viewState = .success(artListModels)
+                }
+            } catch {
+                await MainActor.run {
+                    viewState = .failure(error.localizedDescription)
+                }
+            }
         }
     }
 }

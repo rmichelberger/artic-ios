@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct AsyncImageView: View {
+struct AsyncImageView<Content: View>: View {
     let url: URL?
     let mode: Mode
+    @ViewBuilder var loading: Content
+    
     enum Mode {
         case fill
         case fit
@@ -24,10 +26,7 @@ struct AsyncImageView: View {
                 image.resizable().scaledToFit()
             }
         } placeholder: {
-            ZStack {
-                Color.primary
-                ProgressView().tint(Color.primary).colorInvert()
-            }
+            loading
         }
     }
 }
