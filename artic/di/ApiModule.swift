@@ -11,5 +11,5 @@ import OkHttpClient
 
 extension Dependencies {
     var repository: Repository { Dependencies.currentRepository }
-    static var currentRepository: Repository = RepositoryImpl(apiService: ApiService(retroSwift: RetroSwift(client: OkHttpClient(logger: SimpleRequestLogger()))))
+    static var currentRepository: Repository = RepositoryImpl(apiService: ApiService(retroSwift: RetroSwift(client: OkHttpClient(logger: SimpleLogger()))))
 }
