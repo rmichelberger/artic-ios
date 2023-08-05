@@ -9,9 +9,9 @@ import Foundation
 import Inject
 
 final class ArtListViewModel: ViewModel {
-        
-    @Inject(\.repository) private var repository: Repository
-    @Published private(set) var viewState = ViewState<[Art], String>.initial
+    @Inject(\.useCase) private var useCase: UseCase
+    
+    @Published private(set) var viewState = ViewState<[ArtViewData], String>.initial
     
     init() {
         loadArtList()
@@ -19,16 +19,12 @@ final class ArtListViewModel: ViewModel {
     
     private func loadArtList() {
         viewState = .loading
-        Task {
+        Task { @MainActor in
             do {
-                let artListModels = try await repository.getArtList()
-                await MainActor.run {
-                    viewState = .success(artListModels)
-                }
+                let artListModels = try await useCase.getArtList()
+                viewState = .success(artListModels)
             } catch {
-                await MainActor.run {
-                    viewState = .failure(error.localizedDescription)
-                }
+                viewState = .failure(error.localizedDescription)
             }
         }
     }

@@ -9,15 +9,15 @@ import Foundation
 import Inject
 
 final class ArtDetailViewModel: ViewModel {
+    @Inject(\.useCase) private var useCase: UseCase
     
-    @Inject(\.repository) private var repository: Repository
-    @Published private(set) var viewState = ViewState<ArtDetail, String>.initial
+    @Published private(set) var viewState = ViewState<ArtDetailViewData, String>.initial
     
     @MainActor
     func loadArtDetail(id: Int) async {
         viewState = .loading
         do {
-            let artDetail = try await repository.getArtDetail(id: id)
+            let artDetail = try await useCase.getArtDetail(id: id)
             viewState = .success(artDetail)
         } catch {
             viewState = .failure(error.localizedDescription)

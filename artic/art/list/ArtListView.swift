@@ -10,8 +10,8 @@ import Inject
 
 struct ArtListView: View {
     @ObservedObject private var viewModel: ArtListViewModel = Inject.viewModel()
-
-    let navigateToDetail: (Int) -> Void
+    
+    let navigateToArtDetail: (Int) -> Void
     
     var body: some View {
         Group {
@@ -20,7 +20,7 @@ struct ArtListView: View {
             case .failure(let error): Text(error).padding()
             case .success(let arts):
                 List(arts) { art in
-                    ArtRow(art: art, navigateToDetail: navigateToDetail)
+                    ArtRow(art: art, navigateToArtDetail: navigateToArtDetail)
                 }
             }
         }.navigationTitle("ArtIC")
@@ -28,12 +28,12 @@ struct ArtListView: View {
 }
 
 struct ArtRow: View {
-    let art: Art
-    let navigateToDetail: (Int) -> Void
+    let art: ArtViewData
+    let navigateToArtDetail: (Int) -> Void
     
     var body: some View {
         Button {
-            navigateToDetail(art.id)
+            navigateToArtDetail(art.id)
         } label: {
             VStack(alignment: .leading) {
                 HStack {
@@ -47,20 +47,20 @@ struct ArtRow: View {
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
                             Image(systemName: "person.fill")
-                            Text(art.artistTitle)
+                            Text(art.artistName)
                         }
                         HStack {
                             Image(systemName: "calendar")
-                            Text(art.dateDisplay)
+                            Text(art.date)
                         }
                         HStack {
                             Image(systemName: "mappin")
-                            Text(art.placeOfOrigin)
+                            Text(art.place)
                         }
                     }
                 }
                 Text(art.title).font(.title)
-                Text(art.mediumDisplay).italic().foregroundColor(.secondary)
+                Text(art.medium).italic().foregroundColor(.secondary)
             }
         }.buttonStyle(.plain)
     }
@@ -68,7 +68,7 @@ struct ArtRow: View {
 
 struct ArtListView_Previews: PreviewProvider {
     static var previews: some View {
-        Dependencies.currentRepository = MockRepository()
+        @Provides var repository: Repository = MockRepository()
         return ForEach(ColorScheme.allCases, id: \.self) {
             NavigationView {
                 ArtListView() { _ in }
@@ -76,3 +76,9 @@ struct ArtListView_Previews: PreviewProvider {
         }
     }
 }
+
+#if targetEnvironment(simulator)
+import RetroSwift
+import OkHttpClient
+extension OkHttpClient: HTTPClient {}
+#endif

@@ -9,17 +9,19 @@ final class MockRepository: Repository {
 
     private let hasDelay: Bool
     private let delay: UInt64 = 500_000_000
-
+    
     init(hasDelay: Bool = false) {
         self.hasDelay = hasDelay
     }
     
-    func getArtList() async throws -> [Art] {
+    class func create() -> MockRepository { MockRepository() }
+    
+    func getArtList() async throws -> [ArtData] {
         if hasDelay {
             try await Task.sleep(nanoseconds: delay)
         }
         return [
-            Art(
+            ArtData(
                 id: 8360,
                 title: "Te burao (The Hibiscus Tree)",
                 dateDisplay: "1892",
@@ -27,8 +29,8 @@ final class MockRepository: Repository {
                 mediumDisplay: "Oil on cotton canvas",
                 artistTitle: "Paul Gauguin",
                 imageId: "604fe021-6008-f666-bce8-456b2fdc9bd4",
-                publicationHistory: nil),
-            Art(
+                publicationHistory: "History"),
+            ArtData(
                 id: 11434,
                 title: "Salome with the Head of Saint John the Baptist",
                 dateDisplay: "c. 1639–42",
@@ -36,8 +38,8 @@ final class MockRepository: Repository {
                 mediumDisplay: "Oil on cotton canvas",
                 artistTitle: "Guido Reni",
                 imageId: "1f5b595f-dbbd-3c9d-ca49-9263c3d93841",
-                publicationHistory: nil),
-            Art(
+                publicationHistory: "History"),
+            ArtData(
                 id: 11723,
                 title: "Woman at Her Toilette",
                 dateDisplay: "1875/80",
@@ -45,15 +47,15 @@ final class MockRepository: Repository {
                 mediumDisplay: "Oil on cotton canvas",
                 artistTitle: "Berthe Morisot",
                 imageId: "78c80988-6524-cec7-c661-a4c0a706d06f",
-                publicationHistory: nil),
+                publicationHistory: "History"),
         ]
     }
     
-    func getArtDetail(id: Int) async throws -> ArtDetail {
+    func getArtDetail(id: Int) async throws -> ArtDetailData {
         if hasDelay {
             try await Task.sleep(nanoseconds: delay)
         }
-        return ArtDetail(
+        return ArtDetailData(
             id: 65479,
             title: "Cottages with a Woman Working in the Middle Ground",
             dateDisplay: "1890",

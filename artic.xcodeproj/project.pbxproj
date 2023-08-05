@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22370A022A7A585E007D0F0D /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370A012A7A585E007D0F0D /* UseCase.swift */; };
+		22370A052A7AD313007D0F0D /* ArtDetailViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22370A042A7AD313007D0F0D /* ArtDetailViewData.swift */; };
+		2263D0F92A7AD94E00F53AC4 /* ArtViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263D0F82A7AD94E00F53AC4 /* ArtViewData.swift */; };
 		2271035B2A692AC200546519 /* articApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271035A2A692AC200546519 /* articApp.swift */; };
 		2271035F2A692AC300546519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2271035E2A692AC300546519 /* Assets.xcassets */; };
 		227103622A692AC300546519 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 227103612A692AC300546519 /* Preview Assets.xcassets */; };
@@ -15,11 +18,11 @@
 		2271036F2A692B2200546519 /* ArtDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271036E2A692B2200546519 /* ArtDetailView.swift */; };
 		227103712A692B2D00546519 /* ArtDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103702A692B2D00546519 /* ArtDetailViewModel.swift */; };
 		227103742A692B4B00546519 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103732A692B4B00546519 /* Repository.swift */; };
-		227103762A692BB700546519 /* Art.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103752A692BB700546519 /* Art.swift */; };
-		227103782A69379F00546519 /* ArtDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103772A69379F00546519 /* ArtDetail.swift */; };
+		227103762A692BB700546519 /* ArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103752A692BB700546519 /* ArtData.swift */; };
+		227103782A69379F00546519 /* ArtDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103772A69379F00546519 /* ArtDetailData.swift */; };
 		2271037A2A693A2500546519 /* RepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103792A693A2500546519 /* RepositoryImpl.swift */; };
 		2271037C2A69420000546519 /* MockRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271037B2A69420000546519 /* MockRepository.swift */; };
-		2271038B2A6EC7C500546519 /* ApiModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271038A2A6EC7C500546519 /* ApiModule.swift */; };
+		2271038B2A6EC7C500546519 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271038A2A6EC7C500546519 /* Dependencies.swift */; };
 		2271038E2A6ECE2800546519 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271038D2A6ECE2800546519 /* ViewState.swift */; };
 		227103912A6EDBCE00546519 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103902A6EDBCE00546519 /* ApiResponse.swift */; };
 		227103942A6F026900546519 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103932A6F026900546519 /* AsyncImageView.swift */; };
@@ -28,10 +31,12 @@
 		228D83522A745B55006A8D29 /* RetroSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 228D83512A745B55006A8D29 /* RetroSwift */; };
 		228D83552A74F81A006A8D29 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = 228D83542A74F81A006A8D29 /* Inject */; };
 		228D83582A754471006A8D29 /* OkHttpClient in Frameworks */ = {isa = PBXBuildFile; productRef = 228D83572A754471006A8D29 /* OkHttpClient */; };
-		22F3716C2A72F07D005CB7CC /* TextExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F3716B2A72F07D005CB7CC /* TextExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22370A012A7A585E007D0F0D /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
+		22370A042A7AD313007D0F0D /* ArtDetailViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailViewData.swift; sourceTree = "<group>"; };
+		2263D0F82A7AD94E00F53AC4 /* ArtViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtViewData.swift; sourceTree = "<group>"; };
 		227103572A692AC200546519 /* artic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = artic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2271035A2A692AC200546519 /* articApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = articApp.swift; sourceTree = "<group>"; };
 		2271035E2A692AC300546519 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,11 +46,11 @@
 		2271036E2A692B2200546519 /* ArtDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailView.swift; sourceTree = "<group>"; };
 		227103702A692B2D00546519 /* ArtDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailViewModel.swift; sourceTree = "<group>"; };
 		227103732A692B4B00546519 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
-		227103752A692BB700546519 /* Art.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Art.swift; sourceTree = "<group>"; };
-		227103772A69379F00546519 /* ArtDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetail.swift; sourceTree = "<group>"; };
+		227103752A692BB700546519 /* ArtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtData.swift; sourceTree = "<group>"; };
+		227103772A69379F00546519 /* ArtDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDetailData.swift; sourceTree = "<group>"; };
 		227103792A693A2500546519 /* RepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryImpl.swift; sourceTree = "<group>"; };
 		2271037B2A69420000546519 /* MockRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepository.swift; sourceTree = "<group>"; };
-		2271038A2A6EC7C500546519 /* ApiModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiModule.swift; sourceTree = "<group>"; };
+		2271038A2A6EC7C500546519 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		2271038D2A6ECE2800546519 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		227103902A6EDBCE00546519 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		227103932A6F026900546519 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
@@ -54,7 +59,6 @@
 		228D834F2A745798006A8D29 /* RetroSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RetroSwift; path = ../framework/RetroSwift; sourceTree = "<group>"; };
 		228D83532A74F7E0006A8D29 /* Inject */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Inject; path = ../framework/Inject; sourceTree = "<group>"; };
 		228D83562A7543D9006A8D29 /* OkHttpClient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OkHttpClient; path = ../framework/OkHttpClient; sourceTree = "<group>"; };
-		22F3716B2A72F07D005CB7CC /* TextExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22370A032A7AD1F0007D0F0D /* data */ = {
+			isa = PBXGroup;
+			children = (
+				227103772A69379F00546519 /* ArtDetailData.swift */,
+				22370A042A7AD313007D0F0D /* ArtDetailViewData.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		2263D0F72A7AD93600F53AC4 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				227103752A692BB700546519 /* ArtData.swift */,
+				2263D0F82A7AD94E00F53AC4 /* ArtViewData.swift */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
 		2271034E2A692AC200546519 = {
 			isa = PBXGroup;
 			children = (
@@ -127,7 +149,7 @@
 		2271037D2A6EC6E100546519 /* di */ = {
 			isa = PBXGroup;
 			children = (
-				2271038A2A6EC7C500546519 /* ApiModule.swift */,
+				2271038A2A6EC7C500546519 /* Dependencies.swift */,
 			);
 			path = di;
 			sourceTree = "<group>";
@@ -144,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				227103932A6F026900546519 /* AsyncImageView.swift */,
-				22F3716B2A72F07D005CB7CC /* TextExtension.swift */,
 			);
 			path = "view components";
 			sourceTree = "<group>";
@@ -163,6 +184,7 @@
 			children = (
 				2271039A2A70440900546519 /* detail */,
 				227103992A70440500546519 /* list */,
+				22370A012A7A585E007D0F0D /* UseCase.swift */,
 			);
 			path = art;
 			sourceTree = "<group>";
@@ -170,7 +192,7 @@
 		227103992A70440500546519 /* list */ = {
 			isa = PBXGroup;
 			children = (
-				227103752A692BB700546519 /* Art.swift */,
+				2263D0F72A7AD93600F53AC4 /* data */,
 				2271036A2A692B0700546519 /* ArtListView.swift */,
 				2271036C2A692B1500546519 /* ArtListViewModel.swift */,
 			);
@@ -180,7 +202,7 @@
 		2271039A2A70440900546519 /* detail */ = {
 			isa = PBXGroup;
 			children = (
-				227103772A69379F00546519 /* ArtDetail.swift */,
+				22370A032A7AD1F0007D0F0D /* data */,
 				2271036E2A692B2200546519 /* ArtDetailView.swift */,
 				227103702A692B2D00546519 /* ArtDetailViewModel.swift */,
 			);
@@ -279,11 +301,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2271038B2A6EC7C500546519 /* ApiModule.swift in Sources */,
-				227103782A69379F00546519 /* ArtDetail.swift in Sources */,
+				2263D0F92A7AD94E00F53AC4 /* ArtViewData.swift in Sources */,
+				2271038B2A6EC7C500546519 /* Dependencies.swift in Sources */,
+				227103782A69379F00546519 /* ArtDetailData.swift in Sources */,
 				227103972A703E7B00546519 /* ApiService.swift in Sources */,
 				227103742A692B4B00546519 /* Repository.swift in Sources */,
-				227103762A692BB700546519 /* Art.swift in Sources */,
+				227103762A692BB700546519 /* ArtData.swift in Sources */,
+				22370A022A7A585E007D0F0D /* UseCase.swift in Sources */,
 				2271036D2A692B1500546519 /* ArtListViewModel.swift in Sources */,
 				2271037C2A69420000546519 /* MockRepository.swift in Sources */,
 				227103712A692B2D00546519 /* ArtDetailViewModel.swift in Sources */,
@@ -291,10 +315,10 @@
 				2271036F2A692B2200546519 /* ArtDetailView.swift in Sources */,
 				2271038E2A6ECE2800546519 /* ViewState.swift in Sources */,
 				2271037A2A693A2500546519 /* RepositoryImpl.swift in Sources */,
+				22370A052A7AD313007D0F0D /* ArtDetailViewData.swift in Sources */,
 				2271035B2A692AC200546519 /* articApp.swift in Sources */,
 				2271039C2A71A98100546519 /* Screen.swift in Sources */,
 				227103912A6EDBCE00546519 /* ApiResponse.swift in Sources */,
-				22F3716C2A72F07D005CB7CC /* TextExtension.swift in Sources */,
 				2271036B2A692B0700546519 /* ArtListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

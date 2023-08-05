@@ -1,13 +1,11 @@
 //
-//  ArtDetail.swift
+//  ArtDetailData.swift
 //  artic
 //
 //  Created by roland.michelberger on 20.07.23.
 //
 
-import Foundation
-
-struct ArtDetail: Decodable {
+struct ArtDetailData: Decodable {
     let id: Int
     let title: String?
     let dateDisplay: String?
@@ -28,12 +26,5 @@ struct ArtDetail: Decodable {
         case imageId = "image_id"
         case publicationHistory = "publication_history"
         case styleTitle = "style_title"
-    }
-}
-
-extension ArtDetail {
-    var imageURL: URL? {
-        guard let imageId else { return nil }
-        return URL(string: "https://www.artic.edu/iiif/2/\(imageId)/full/873,/0/default.jpg")
     }
 }

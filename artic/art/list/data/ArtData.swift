@@ -1,13 +1,11 @@
 //
-//  Art.swift
+//  ArtData.swift
 //  artic
 //
 //  Created by roland.michelberger on 20.07.23.
 //
 
-import Foundation
-
-struct Art: Decodable, Identifiable {
+struct ArtData: Decodable {
     let id: Int
     let title: String?
     let dateDisplay: String?
@@ -26,12 +24,5 @@ struct Art: Decodable, Identifiable {
         case artistTitle = "artist_title"
         case imageId = "image_id"
         case publicationHistory = "publication_history"
-    }
-}
-
-extension Art {
-    var imageURL: URL? {
-        guard let imageId else { return nil }
-        return URL(string: "https://www.artic.edu/iiif/2/\(imageId)/full/400,/0/default.jpg")
     }
 }

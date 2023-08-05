@@ -24,15 +24,14 @@ struct ArtDetailView: View {
                         ProgressView().tint(Color.primary).colorInvert()
                     }.frame(maxWidth: .infinity, minHeight: 100)
                         .background(.primary)
-                    Text(artDetail.artistDisplay).padding(.horizontal).italic().foregroundColor(.secondary)
+                    Text(artDetail.artistName).padding(.horizontal).italic().foregroundColor(.secondary)
                     HStack {
                         Image(systemName: "list.bullet").bold()
                         Text("History").font(.title2).bold()
                         Spacer()
                     }.padding(.horizontal).padding(.top).padding(.bottom, 8)
-                    Text(artDetail.publicationHistory).padding(.horizontal)
-                }
-                .navigationTitle(artDetail.title ?? "")
+                    Text(artDetail.history).padding(.horizontal)
+                }.navigationTitle(artDetail.title)
             }
         }.task {
             await viewModel.loadArtDetail(id: id)
@@ -42,7 +41,7 @@ struct ArtDetailView: View {
 
 struct ArtDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        Dependencies.currentRepository = MockRepository()
+        @Provides var repository: Repository = MockRepository()
         return ForEach(ColorScheme.allCases, id: \.self) {
             NavigationView {
                 ArtDetailView(id: 1)

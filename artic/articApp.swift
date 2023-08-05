@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import Inject
 
 @main
 struct articApp: App {
     @State private var path = [Screen]()
+    
+    init() {
+        Dependencies.provideSingleton()
+//        @Provides var repo: Repository = MockRepository()
+    }
     
     var body: some Scene {
         WindowGroup {
