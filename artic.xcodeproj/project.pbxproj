@@ -28,9 +28,9 @@
 		227103942A6F026900546519 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103932A6F026900546519 /* AsyncImageView.swift */; };
 		227103972A703E7B00546519 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103962A703E7B00546519 /* ApiService.swift */; };
 		2271039C2A71A98100546519 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271039B2A71A98100546519 /* Screen.swift */; };
-		228D83522A745B55006A8D29 /* RetroSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 228D83512A745B55006A8D29 /* RetroSwift */; };
-		228D83552A74F81A006A8D29 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = 228D83542A74F81A006A8D29 /* Inject */; };
-		228D83582A754471006A8D29 /* OkHttpClient in Frameworks */ = {isa = PBXBuildFile; productRef = 228D83572A754471006A8D29 /* OkHttpClient */; };
+		22E884892A98DE1600BB2008 /* RetroSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22E884882A98DE1600BB2008 /* RetroSwift */; };
+		22E8848C2A98DF5700BB2008 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = 22E8848B2A98DF5700BB2008 /* Inject */; };
+		22E8848F2A98E02500BB2008 /* OkHttpClient in Frameworks */ = {isa = PBXBuildFile; productRef = 22E8848E2A98E02500BB2008 /* OkHttpClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,9 +56,6 @@
 		227103932A6F026900546519 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		227103962A703E7B00546519 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		2271039B2A71A98100546519 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
-		228D834F2A745798006A8D29 /* RetroSwift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = RetroSwift; path = ../framework/RetroSwift; sourceTree = "<group>"; };
-		228D83532A74F7E0006A8D29 /* Inject */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Inject; path = ../framework/Inject; sourceTree = "<group>"; };
-		228D83562A7543D9006A8D29 /* OkHttpClient */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = OkHttpClient; path = ../framework/OkHttpClient; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +63,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				228D83582A754471006A8D29 /* OkHttpClient in Frameworks */,
-				228D83522A745B55006A8D29 /* RetroSwift in Frameworks */,
-				228D83552A74F81A006A8D29 /* Inject in Frameworks */,
+				22E8848F2A98E02500BB2008 /* OkHttpClient in Frameworks */,
+				22E884892A98DE1600BB2008 /* RetroSwift in Frameworks */,
+				22E8848C2A98DF5700BB2008 /* Inject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +93,6 @@
 		2271034E2A692AC200546519 = {
 			isa = PBXGroup;
 			children = (
-				228D834E2A745798006A8D29 /* Packages */,
 				227103592A692AC200546519 /* artic */,
 				227103582A692AC200546519 /* Products */,
 				228D83502A745B55006A8D29 /* Frameworks */,
@@ -209,16 +205,6 @@
 			path = detail;
 			sourceTree = "<group>";
 		};
-		228D834E2A745798006A8D29 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				228D834F2A745798006A8D29 /* RetroSwift */,
-				228D83532A74F7E0006A8D29 /* Inject */,
-				228D83562A7543D9006A8D29 /* OkHttpClient */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		228D83502A745B55006A8D29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,9 +229,9 @@
 			);
 			name = artic;
 			packageProductDependencies = (
-				228D83512A745B55006A8D29 /* RetroSwift */,
-				228D83542A74F81A006A8D29 /* Inject */,
-				228D83572A754471006A8D29 /* OkHttpClient */,
+				22E884882A98DE1600BB2008 /* RetroSwift */,
+				22E8848B2A98DF5700BB2008 /* Inject */,
+				22E8848E2A98E02500BB2008 /* OkHttpClient */,
 			);
 			productName = artic;
 			productReference = 227103572A692AC200546519 /* artic.app */;
@@ -275,6 +261,11 @@
 				Base,
 			);
 			mainGroup = 2271034E2A692AC200546519;
+			packageReferences = (
+				22E884872A98DE1600BB2008 /* XCRemoteSwiftPackageReference "RetroSwift" */,
+				22E8848A2A98DF5700BB2008 /* XCRemoteSwiftPackageReference "Inject" */,
+				22E8848D2A98E02500BB2008 /* XCRemoteSwiftPackageReference "OkHttpClient" */,
+			);
 			productRefGroup = 227103582A692AC200546519 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -521,17 +512,47 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		22E884872A98DE1600BB2008 /* XCRemoteSwiftPackageReference "RetroSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rmichelberger/RetroSwift/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		22E8848A2A98DF5700BB2008 /* XCRemoteSwiftPackageReference "Inject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rmichelberger/Inject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		22E8848D2A98E02500BB2008 /* XCRemoteSwiftPackageReference "OkHttpClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rmichelberger/OkHttpClient";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		228D83512A745B55006A8D29 /* RetroSwift */ = {
+		22E884882A98DE1600BB2008 /* RetroSwift */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 22E884872A98DE1600BB2008 /* XCRemoteSwiftPackageReference "RetroSwift" */;
 			productName = RetroSwift;
 		};
-		228D83542A74F81A006A8D29 /* Inject */ = {
+		22E8848B2A98DF5700BB2008 /* Inject */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 22E8848A2A98DF5700BB2008 /* XCRemoteSwiftPackageReference "Inject" */;
 			productName = Inject;
 		};
-		228D83572A754471006A8D29 /* OkHttpClient */ = {
+		22E8848E2A98E02500BB2008 /* OkHttpClient */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 22E8848D2A98E02500BB2008 /* XCRemoteSwiftPackageReference "OkHttpClient" */;
 			productName = OkHttpClient;
 		};
 /* End XCSwiftPackageProductDependency section */
