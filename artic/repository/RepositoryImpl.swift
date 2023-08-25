@@ -8,8 +8,8 @@
 import Inject
 
 final class RepositoryImpl: Repository {
-    @Inject(\.apiService) private var apiService: ApiService
-    
+    @Inject private var apiService: ApiService
+
     func getArtList() async throws -> [ArtData] {
         try await apiService.getArtList().data
     }

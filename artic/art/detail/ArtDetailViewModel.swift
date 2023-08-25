@@ -8,11 +8,11 @@
 import Foundation
 import Inject
 
-final class ArtDetailViewModel: ViewModel {
-    @Inject(\.useCase) private var useCase: UseCase
-    
+final class ArtDetailViewModel: ObservableObject {
+    @Inject private var useCase: UseCase
+
     @Published private(set) var viewState = ViewState<ArtDetailViewData, String>.initial
-    
+        
     @MainActor
     func loadArtDetail(id: Int) async {
         viewState = .loading

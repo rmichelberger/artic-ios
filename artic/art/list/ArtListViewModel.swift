@@ -8,9 +8,9 @@
 import Foundation
 import Inject
 
-final class ArtListViewModel: ViewModel {
-    @Inject(\.useCase) private var useCase: UseCase
-    
+final class ArtListViewModel: ObservableObject {
+    @Inject private var useCase: UseCase
+
     @Published private(set) var viewState = ViewState<[ArtViewData], String>.initial
     
     init() {

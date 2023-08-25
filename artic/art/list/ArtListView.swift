@@ -9,10 +9,11 @@ import SwiftUI
 import Inject
 
 struct ArtListView: View {
-    @ObservedObject private var viewModel: ArtListViewModel = Inject.viewModel()
     
     let navigateToArtDetail: (Int) -> Void
-    
+
+    @StateObject private var viewModel: ArtListViewModel = ViewModel()
+
     var body: some View {
         Group {
             switch viewModel.viewState {
@@ -68,7 +69,7 @@ struct ArtRow: View {
 
 struct ArtListView_Previews: PreviewProvider {
     static var previews: some View {
-        @Provides var repository: Repository = MockRepository()
+        @Singleton var repository: Repository = MockRepository()
         return ForEach(ColorScheme.allCases, id: \.self) {
             NavigationView {
                 ArtListView() { _ in }

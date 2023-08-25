@@ -11,8 +11,9 @@ import Inject
 struct ArtDetailView: View {
     
     let id: Int
-    @ObservedObject private var viewModel: ArtDetailViewModel = Inject.viewModel()
     
+    @StateObject private var viewModel: ArtDetailViewModel = ViewModel()
+
     var body: some View {
         Group {
             switch viewModel.viewState {
@@ -25,6 +26,7 @@ struct ArtDetailView: View {
                     }.frame(maxWidth: .infinity, minHeight: 100)
                         .background(.primary)
                     Text(artDetail.artistName).padding(.horizontal).italic().foregroundColor(.secondary)
+                    Text(artDetail.style).padding(.horizontal).padding(.vertical, 8).bold()
                     HStack {
                         Image(systemName: "list.bullet").bold()
                         Text("History").font(.title2).bold()
@@ -41,7 +43,7 @@ struct ArtDetailView: View {
 
 struct ArtDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        @Provides var repository: Repository = MockRepository()
+        @Singleton var repository: Repository = MockRepository()
         return ForEach(ColorScheme.allCases, id: \.self) {
             NavigationView {
                 ArtDetailView(id: 1)

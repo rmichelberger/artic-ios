@@ -13,8 +13,7 @@ struct articApp: App {
     @State private var path = [Screen]()
     
     init() {
-        Dependencies.provideSingleton()
-//        @Provides var repo: Repository = MockRepository()
+        Dependencies()
     }
     
     var body: some Scene {

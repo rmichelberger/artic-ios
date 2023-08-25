@@ -10,8 +10,8 @@ import Inject
 import RetroSwift
 
 final class ApiService {
-    @Inject(\.retroSwift) private var retroSwift: RetroSwift
-    
+    @Inject private var retroSwift: RetroSwift
+
     private let baseUrl = "https://api.artic.edu"
     
     func getArtList() async throws -> ApiResponse<[ArtData]> {
@@ -24,7 +24,7 @@ final class ApiService {
 
     func getArtDetail(id: Int) async throws -> ApiResponse<ArtDetailData> {
         @Path(path: "/api/v1/artworks/{id}", name: "id") var path = id
-        @Query(name: "fields") var fields = "id,title,image_id,date_display,place_of_origin,medium_display,publication_history,artist_display,style_title"
+        @Query(name: "fields") var fields = "id,title,image_id,publication_history,artist_display,style_title"
         @GET(baseURL: baseUrl, path: path, queries: [fields]) var request
         return try await retroSwift.execute(request: request)
     }

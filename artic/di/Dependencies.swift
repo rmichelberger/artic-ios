@@ -9,19 +9,21 @@ import RetroSwift
 import Inject
 import OkHttpClient
 
-extension Dependencies {
-
-    static func provideSingleton() {
-        @Provides var repo: Repository = RepositoryImpl()
-    }
-
-    var retroSwift: RetroSwift {
+func Dependencies() {
+    
+    @Provides var apiService = { ApiService() }
+    @Provides var retroSwift = {
         let logger = SimpleLogger()
         let client = OkHttpClient(logger: logger)
         return RetroSwift(client: client)
     }
-    
-    var apiService: ApiService { ApiService() }
-    var useCase: UseCase { UseCase() }
-}
+    @Provides var useCase = { UseCase() }
+        
 
+    // ViewModels
+    @Provides var artListViewModel = { ArtListViewModel() }
+    @Provides var artDetailViewModel = { ArtDetailViewModel() }
+    
+    // Singletons
+    @Singleton var repository: Repository = RepositoryImpl()
+}
