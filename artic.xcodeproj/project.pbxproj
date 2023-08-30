@@ -28,10 +28,21 @@
 		227103942A6F026900546519 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103932A6F026900546519 /* AsyncImageView.swift */; };
 		227103972A703E7B00546519 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227103962A703E7B00546519 /* ApiService.swift */; };
 		2271039C2A71A98100546519 /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2271039B2A71A98100546519 /* Screen.swift */; };
+		22778C132A9A83DC00C95E14 /* UseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22778C122A9A83DC00C95E14 /* UseCaseTests.swift */; };
 		22E884892A98DE1600BB2008 /* RetroSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22E884882A98DE1600BB2008 /* RetroSwift */; };
 		22E8848C2A98DF5700BB2008 /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = 22E8848B2A98DF5700BB2008 /* Inject */; };
 		22E8848F2A98E02500BB2008 /* OkHttpClient in Frameworks */ = {isa = PBXBuildFile; productRef = 22E8848E2A98E02500BB2008 /* OkHttpClient */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22778C142A9A83DC00C95E14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2271034F2A692AC200546519 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 227103562A692AC200546519;
+			remoteInfo = artic;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		22370A012A7A585E007D0F0D /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
@@ -56,6 +67,8 @@
 		227103932A6F026900546519 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		227103962A703E7B00546519 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		2271039B2A71A98100546519 /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		22778C102A9A83DC00C95E14 /* articTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = articTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22778C122A9A83DC00C95E14 /* UseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +79,13 @@
 				22E8848F2A98E02500BB2008 /* OkHttpClient in Frameworks */,
 				22E884892A98DE1600BB2008 /* RetroSwift in Frameworks */,
 				22E8848C2A98DF5700BB2008 /* Inject in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22778C0D2A9A83DC00C95E14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				227103592A692AC200546519 /* artic */,
+				22778C112A9A83DC00C95E14 /* articTests */,
 				227103582A692AC200546519 /* Products */,
 				228D83502A745B55006A8D29 /* Frameworks */,
 			);
@@ -103,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				227103572A692AC200546519 /* artic.app */,
+				22778C102A9A83DC00C95E14 /* articTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -205,6 +227,14 @@
 			path = detail;
 			sourceTree = "<group>";
 		};
+		22778C112A9A83DC00C95E14 /* articTests */ = {
+			isa = PBXGroup;
+			children = (
+				22778C122A9A83DC00C95E14 /* UseCaseTests.swift */,
+			);
+			path = articTests;
+			sourceTree = "<group>";
+		};
 		228D83502A745B55006A8D29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +267,24 @@
 			productReference = 227103572A692AC200546519 /* artic.app */;
 			productType = "com.apple.product-type.application";
 		};
+		22778C0F2A9A83DC00C95E14 /* articTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22778C182A9A83DC00C95E14 /* Build configuration list for PBXNativeTarget "articTests" */;
+			buildPhases = (
+				22778C0C2A9A83DC00C95E14 /* Sources */,
+				22778C0D2A9A83DC00C95E14 /* Frameworks */,
+				22778C0E2A9A83DC00C95E14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22778C152A9A83DC00C95E14 /* PBXTargetDependency */,
+			);
+			name = articTests;
+			productName = articTests;
+			productReference = 22778C102A9A83DC00C95E14 /* articTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -249,6 +297,10 @@
 				TargetAttributes = {
 					227103562A692AC200546519 = {
 						CreatedOnToolsVersion = 14.3.1;
+					};
+					22778C0F2A9A83DC00C95E14 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 227103562A692AC200546519;
 					};
 				};
 			};
@@ -271,6 +323,7 @@
 			projectRoot = "";
 			targets = (
 				227103562A692AC200546519 /* artic */,
+				22778C0F2A9A83DC00C95E14 /* articTests */,
 			);
 		};
 /* End PBXProject section */
@@ -282,6 +335,13 @@
 			files = (
 				227103622A692AC300546519 /* Preview Assets.xcassets in Resources */,
 				2271035F2A692AC300546519 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22778C0E2A9A83DC00C95E14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +374,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		22778C0C2A9A83DC00C95E14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22778C132A9A83DC00C95E14 /* UseCaseTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22778C152A9A83DC00C95E14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 227103562A692AC200546519 /* artic */;
+			targetProxy = 22778C142A9A83DC00C95E14 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		227103632A692AC300546519 /* Debug */ = {
@@ -489,6 +565,42 @@
 			};
 			name = Release;
 		};
+		22778C162A9A83DC00C95E14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 738QS98255;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = roland.michelberger.articTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/artic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/artic";
+			};
+			name = Debug;
+		};
+		22778C172A9A83DC00C95E14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 738QS98255;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = roland.michelberger.articTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/artic.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/artic";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -506,6 +618,15 @@
 			buildConfigurations = (
 				227103662A692AC300546519 /* Debug */,
 				227103672A692AC300546519 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22778C182A9A83DC00C95E14 /* Build configuration list for PBXNativeTarget "articTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22778C162A9A83DC00C95E14 /* Debug */,
+				22778C172A9A83DC00C95E14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

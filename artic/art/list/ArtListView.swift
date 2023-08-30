@@ -24,7 +24,11 @@ struct ArtListView: View {
                     ArtRow(art: art, navigateToArtDetail: navigateToArtDetail)
                 }
             }
-        }.navigationTitle("ArtIC")
+        }
+        .navigationTitle("ArtIC")
+        .task {
+            await viewModel.loadArtList()
+        }
     }
 }
 

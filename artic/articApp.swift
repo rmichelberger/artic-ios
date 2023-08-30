@@ -14,6 +14,7 @@ struct articApp: App {
     
     init() {
         Dependencies()
+        @Singleton var repo: Repository = MockRepository()
     }
     
     var body: some Scene {
